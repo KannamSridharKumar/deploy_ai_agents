@@ -1,0 +1,6 @@
+OPENAI_API_KEY=sk-proj-abcdefghijklmnopqrstuvwxyz
+PG_DATABASE=postgres
+PG_USERNAME=postgres
+PG_PASSWORD=password
+PG_HOST=pgdb.abcdefghijklmnopqrstuvwxyz.ap-southeast-2.rds.amazonaws.com
+PG_PORT=5432
