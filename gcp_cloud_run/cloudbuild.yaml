@@ -1,0 +1,25 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/sri-nana/ai-agent-app", "."]
+
+  # Step 2: Push the Docker image to GCR
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/sri-nana/ai-agent-app"]
+
+# Step 3: Deploy the image to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run", "deploy", "ai-agent-app",
+        "--image", "gcr.io/sri-nana/ai-agent-app",
+        "--platform", "managed",
+        "--region", "us-central1",
+        "--service-account=366521784206-compute@developer.gserviceaccount.com",
+         "--allow-unauthenticated", 
+      ]
+
+# images:
+#   - "gcr.io/sri-nana/ai-agent-app"
+
+# timeout: '1200s'  # Set timeout to 20 minutes
