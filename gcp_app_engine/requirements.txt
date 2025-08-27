@@ -1,0 +1,10 @@
+pydantic==2.6.1
+pydantic-core==2.16.2
+fastapi 
+uvicorn
+uvicorn[standard]
+python-dotenv
+openai
+agno
+sqlalchemy
+psycopg2-binary

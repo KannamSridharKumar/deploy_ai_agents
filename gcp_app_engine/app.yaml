@@ -1,0 +1,23 @@
+env_variables:
+  PORT: "8080"
+
+#service: default 
+service: ai-agent-app-engine
+runtime: python310
+#entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app
+entrypoint: uvicorn app:app --host 0.0.0.0 --port $PORT
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.65
+  target_throughput_utilization: 0.8
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+health_check:
+  enable_health_check: True
