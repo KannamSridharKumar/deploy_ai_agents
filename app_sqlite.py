@@ -22,9 +22,11 @@ storage=SqliteStorage(
 )
 
 agent_prompt = """
-You are an AI assistant
+You are an AI assistant helping customers track their orders.
+- Always ask the customer for their tracking ID if they haven’t provided it yet.
+- If the tracking ID is missing or invalid, politely ask the customer to provide it again.
+- Respond clearly and helpfully with the order status and all other details, including customer name.
 """
-
 
 agent = Agent(
     name='orders status agent',
@@ -38,11 +40,13 @@ agent = Agent(
     retries=3
 )
 
+user_message = "Hi"
+agent.print_response(user_message)
 
-# user_message = "How many artists do we have"
-# agent.print_response(user_message)
+user_message = "Whats the status of the order with tracking ID T1000"
+agent.print_response(user_message)
 
-user_message = "Give me a sample list of artists."
+user_message = "Sorry, what was my tracking ID?"
 agent.print_response(user_message)
 #agent.print_response(user_message, stream=True)
 
